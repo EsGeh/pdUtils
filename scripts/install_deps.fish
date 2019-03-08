@@ -16,12 +16,12 @@ cd -
 
 git clone git@github.com:EsGeh/structuredData.git
 cd structuredData
-git checkout d1cb758e2eba84082fac32814ff81f6bf4c3fac4
+git checkout 64c0722b6fe1e4fa97bebd02cd1e944634025580
 eval "./scripts/install_deps.fish"
 cd -
 
 git clone git@github.com:EsGeh/sdScript.git
 cd sdScript
-git checkout e35ae897ccd92b74e5157805452da5faab14a11a
+git checkout 720888e75a085deeba009cef47a2c834cbcc8093
 eval "./scripts/install_deps.fish"
 cd -

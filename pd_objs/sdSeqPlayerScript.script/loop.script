@@ -1,0 +1,30 @@
+list
+If ( Card ( Get ( rest_sequence ) )
+	Var ( next_pack sdData_First ( Get ( rest_sequence ) ) )
+	Var ( next_time sdPack_Params ( sdData_FilterAccept ( time sdPack_Params ( Get ( next_pack ) ) ) ) )
+	Var ( next_delay sdPack_Params ( sdData_FilterAccept  ( delay sdPack_Params ( Get ( next_pack ) ) ) ) )
+
+	Var ( is_delay Card ( Get ( next_delay ) ) )
+	Var ( is_time Card ( Get ( next_time ) ) )
+	If ( Get ( is_time )
+		Set ( next_delay Sub ( Get ( next_time ) Get ( time ) ) )
+	)
+	If ( ! ( || ( Get ( is_time ) Get ( is_delay ) ) )
+		Set ( next_delay 0 )
+	)
+	Var ( actual_delay Mul ( Get ( next_delay ) Get ( speed ) ) )
+
+	Delay ( Get ( actual_delay ) )
+
+	Print ( delay Get ( actual_delay ) ) Out ( )
+	Var ( next_pack_output Get ( next_pack ) )
+	If ( ! ( Get ( keep_time ) )
+		Set ( next_pack_output sdData_FilterReject ( time sdPack_Params ( Get ( next_pack ) ) ) )
+	)
+	Print ( next_pack Get ( next_pack_output ) ) Out ( )
+
+	Set ( time Add ( Get ( next_delay ) Get ( time ) ) )
+	Set ( rest_sequence sdData_Rest ( Get ( rest_sequence ) ) )
+
+	Call ( loop )
+)

@@ -1,0 +1,7 @@
+list
+Print ( start ) Out ( )
+Set ( time 0 )
+VarMain ( rest_sequence )
+Set ( rest_sequence Get ( sequence ) )
+Call ( loop )
+Print ( done ) Out ( )
