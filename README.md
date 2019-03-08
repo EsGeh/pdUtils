@@ -1,8 +1,14 @@
-# sdSequencing
+# sdUtils
 
-Some puredata abstractions for "sequencing" in the spirit of the [structuredData](https://github.com/EsGeh/structuredData) library.
-Events can be recorded and played back again.
-Events are messages structured in a specific way, as documented by the structuredData documentation.
+Some puredata abstractions. Bits and pieces I use in puredata projects.
+It has is designed in the spirit of the [structuredData](https://github.com/EsGeh/structuredData) library.
+
+Some mentionable features:
+
+- "sequencing"
+
+	Events can be recorded and played back again.
+	Events are messages structured in a specific way, as documented by the structuredData documentation.
 
 ## Dependencies
 
