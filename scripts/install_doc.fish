@@ -62,15 +62,12 @@ end
 # install objs
 eval "$SCRIPTS_DIR/install.fish --link --dest '$install'"
 
-# install legacy obj
-eval "$BASE_DIR/dependencies/structuredData/legacy/scripts/install.fish --link --dest '$install_legacy'"
-
 # install structuredData
-cd "$BASE_DIR/dependencies/structuredData/c"
-eval "$BASE_DIR/dependencies/structuredData/c/scripts/run_autotools.fish"
+cd "$BASE_DIR/dependencies/structuredData"
+eval "$BASE_DIR/dependencies/structuredData/scripts/run_autotools.fish"
 cd -
 
-eval "$BASE_DIR/dependencies/structuredData/c/scripts/build.fish build install --prefix '$install_sd'"
+eval "$BASE_DIR/dependencies/structuredData/scripts/build.fish build install --prefix '$install_sd'"
 
 # install sdScript:
 cd "$BASE_DIR/dependencies/sdScript"
