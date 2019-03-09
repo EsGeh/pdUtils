@@ -1,4 +1,4 @@
-#N canvas 0 30 846 854 10;
+#N canvas 0 30 894 411 10;
 #X obj 12 12 inlet;
 #X obj 487 398 textfile;
 #X obj 487 423 s \$0-script;

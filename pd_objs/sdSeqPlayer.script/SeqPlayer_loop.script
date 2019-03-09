@@ -17,7 +17,7 @@ If ( Card ( Get ( rest_sequence ) )
 	Print ( delay Get ( actual_delay ) ) Out ( )
 	Var ( next_pack_output Get ( next_pack ) )
 	If ( ! ( Get ( keep_time ) )
-		Set ( next_pack_output sdData_FilterReject ( time sdPack_Params ( Get ( next_pack ) ) ) )
+		Set ( next_pack_output Pack ( sdPack_Type ( Get ( next_pack ) )  sdData_FilterReject ( time sdPack_Params ( Get ( next_pack ) ) ) ) )
 	)
 	Print ( next_pack Get ( next_pack_output ) ) Out ( )
 
