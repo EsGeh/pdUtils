@@ -9,7 +9,7 @@ source (dirname (readlink -m (status filename)))/utils/cmd_args.fish
 
 
 set src (dirname (readlink -m (status filename)))/../pd_objs
-set install_dir "$HOME/.local/lib/pd/extra/sdSequencing"
+set install_dir "$HOME/.local/lib/pd/extra/pdUtils"
 set rename '{}'
 
 # (syntax: short/long/description)

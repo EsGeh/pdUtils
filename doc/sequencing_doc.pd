@@ -1,4 +1,4 @@
-#N canvas 0 30 894 854 10;
+#N canvas 0 30 654 854 10;
 #X obj 80 157 sdRandomDoc;
 #N canvas 0 30 894 854 sequencing 0;
 #X obj 343 41 bng 15 250 50 0 empty empty restart_time 17 7 0 10 -262144
@@ -27,7 +27,7 @@
 #X obj 251 667 print delay;
 #X floatatom 209 462 5 0 0 0 - - -;
 #X obj 212 441 hsl 128 15 0.01 100 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 640 1;
+-262144 -1 -1 0 1;
 #X obj 236 135 sdEvent pack value;
 #X obj 212 257 sdData;
 #X obj 229 28 bng 30 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -84,7 +84,7 @@
 #X connect 38 0 10 0;
 #X connect 39 0 21 0;
 #X restore 85 383 pd sequencing;
-#N canvas 0 30 894 854 basic 0;
+#N canvas 0 30 654 854 basic 0;
 #X floatatom 73 578 5 0 0 0 - - -;
 #X floatatom 113 470 5 0 0 0 - - -;
 #X floatatom 74 470 5 0 0 0 - - -;
@@ -109,14 +109,23 @@
 #X restore 85 293 pd basic;
 #X text 53 264 gui elements;
 #X text 48 210 signal;
-#N canvas 0 30 894 854 signal 0;
+#N canvas 0 30 654 854 signal 0;
 #X floatatom 156 25 5 0 0 0 - - -;
-#X floatatom 167 144 5 0 0 0 - - -;
+#X floatatom 223 164 5 0 0 0 - - -;
 #X obj 164 59 sdF2Sig~;
-#X obj 167 120 sdSig2F~;
+#X obj 223 140 sdSig2F~;
+#X obj 282 98 sdGate~ 0;
+#X obj 353 67 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 387 157 5 0 0 0 - - -;
+#X obj 387 133 sdSig2F~;
 #X connect 0 0 2 0;
-#X connect 2 0 3 0;
+#X connect 2 0 4 0;
 #X connect 3 0 1 0;
+#X connect 4 0 3 0;
+#X connect 4 1 7 0;
+#X connect 5 0 4 1;
+#X connect 7 0 6 0;
 #X restore 83 239 pd signal;
 #X text 50 137 random;
 #X obj 84 64 sdMathDoc;
