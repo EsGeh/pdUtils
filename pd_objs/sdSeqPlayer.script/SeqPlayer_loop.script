@@ -14,14 +14,16 @@ If ( Card ( Get ( rest_sequence ) )
 	)
 	Var ( actual_delay Mul ( Get ( next_delay ) Get ( speed ) ) )
 
-	Delay ( Get ( actual_delay ) )
-
 	Print ( delay Get ( actual_delay ) ) Out ( )
 	Var ( next_pack_output Get ( next_pack ) )
 	If ( ! ( Get ( keep_time ) )
 		Set ( next_pack_output sdData_FilterReject ( time sdPack_Params ( Get ( next_pack ) ) ) )
 	)
 	Print ( next_pack Get ( next_pack_output ) ) Out ( )
+
+	Delay ( Get ( actual_delay ) )
+
+	Print ( bang ) Out ( )
 
 	Set ( time Add ( Get ( next_delay ) Get ( time ) ) )
 	Set ( rest_sequence sdData_Rest ( Get ( rest_sequence ) ) )
