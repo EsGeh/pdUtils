@@ -17,7 +17,7 @@ Some mentionable features:
 - [structuredData](https://github.com/EsGeh/structuredData)
 - other repositories. Please execute:
 
-		$ ./scripts/install_deps.fish
+		$ ./scripts/init.fish
 
 ## Installation
 
@@ -47,11 +47,15 @@ This will copy all necessary abstractions to the home directory.
 
 	(manuall adjust the numbering!)
 
+## Uninstall
+
+No script provided yet
+
 ## Other scripts
 
-- uninstall:
+- clean up downloaded dependencies, temporary files:
 
-		$ ./scripts/uninstall.fish
+		$ ./scripts/exit.fish
 
 ## Documentation
 
@@ -62,12 +66,12 @@ To see it, please install and run it, as described below:
 
 This installs all dependencies in some local folder.
 
-	$ ./scripts/install_doc.fish
+	$ ./scripts/doc_init.fish
 
 ### run docu
 
-	$ ./scripts/run_doc.fish
+	$ ./scripts/doc_run.fish
 
 ### uninstall docu
 
-	$ ./scripts/uninstall_doc.fish
+	$ ./scripts/doc_exit.fish
