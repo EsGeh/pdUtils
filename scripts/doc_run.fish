@@ -7,7 +7,6 @@ set doc_dir $BASE_DIR/doc
 
 # where to install:
 set install "$doc_dir/install"
-set install_legacy "$doc_dir/install_legacy"
 set install_sd "$doc_dir/install_sd"
 set install_sdscript "$doc_dir/install_sdscript"
 
@@ -15,7 +14,6 @@ set install_sdscript "$doc_dir/install_sdscript"
 pd \
 	-noprefs \
 	-path "$install" \
-	-path "$install_legacy" \
 	-path "$install_sd" \
 	-path "$install_sdscript" \
 	-lib "structuredDataC" \
