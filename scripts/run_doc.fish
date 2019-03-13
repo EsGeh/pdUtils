@@ -12,7 +12,7 @@ set install_sd "$doc_dir/install_sd"
 set install_sdscript "$doc_dir/install_sdscript"
 
 
-pd -noaudio \
+pd \
 	-noprefs \
 	-path "$install" \
 	-path "$install_legacy" \
@@ -20,4 +20,4 @@ pd -noaudio \
 	-path "$install_sdscript" \
 	-lib "structuredDataC" \
 	-lib "sdScript" \
-	"$doc_dir/sequencing_doc.pd"
+	"$doc_dir/doc.pd"
