@@ -16,7 +16,7 @@ cd -
 
 git clone git@github.com:EsGeh/structuredData.git
 cd structuredData
-git checkout 2711ff40a34b20161d7191fa59f11e483c783cda
+git checkout a6bd6caea24a159661ee1231e9be876da447215d
 eval "./scripts/install_deps.fish"
 cd -
 
