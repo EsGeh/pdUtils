@@ -72,8 +72,8 @@
 #X obj 20 3 cnv 15 24 10 empty \$0-maxLabel_rcv 10 1 6 0 10 -233017
 -66577 0;
 #X obj 96 161 t f f;
-#X obj 26 206 sdF2Sig~;
 #X obj 26 233 outlet~;
+#X obj 26 206 sdNum2Sig~;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 2 0 54 0;
@@ -125,7 +125,7 @@
 #X connect 61 0 60 0;
 #X connect 63 0 31 0;
 #X connect 63 1 26 0;
-#X connect 65 0 66 0;
+#X connect 65 0 67 0;
 #X connect 65 1 22 0;
-#X connect 66 0 67 0;
+#X connect 67 0 66 0;
 #X coords 0 0 1 1 50 48 2 0 0;
