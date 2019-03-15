@@ -51,4 +51,4 @@ end
 # actual script
 #################################################
 
-eval "$SCRIPTS_DIR/install.fish --no-subdirs --deps --dest '$doc_dir'"
+eval "$SCRIPTS_DIR/install.fish -l --no-subdirs --deps --dest '$doc_dir'"
