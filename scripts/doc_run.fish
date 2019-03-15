@@ -7,6 +7,7 @@ set doc_dir $BASE_DIR/doc
 
 pd \
 	-noprefs \
+	-jack \
 	-path "$doc_dir" \
 	-lib "structuredDataC" \
 	-lib "sdScript" \
