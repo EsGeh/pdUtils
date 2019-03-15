@@ -1,15 +1,8 @@
 
-
-
-
-
 /dependencies/
 /build/
 /build-aux/
-/doc/install/
-/doc/install_legacy/
-/doc/install_sd/
-/doc/install_sdscript/
+/doc/
 
 # http://www.gnu.org/software/automake
 

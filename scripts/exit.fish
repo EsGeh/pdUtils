@@ -2,6 +2,7 @@
 
 set BASE_DIR (dirname (readlink -m (status filename)))/..
 set SCRIPTS_DIR (dirname (readlink -m (status filename)))
+set DEP_DIR "$BASE_DIR/dependencies"
 
 eval "$SCRIPTS_DIR/doc_exit.fish"
-rm -rf "$BASE_DIR/dependencies"
+rm -rf "$DEP_DIR"

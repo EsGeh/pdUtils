@@ -16,16 +16,9 @@ source $SCRIPTS_DIR/utils/cmd_args.fish
 
 set doc_dir $BASE_DIR/doc
 
-# where to install:
-set install "$doc_dir/install"
-set install_sd "$doc_dir/install_sd"
-set install_sdscript "$doc_dir/install_sdscript"
-
 # (syntax: short/long/description)
 set options_descr \
 	'h/help/print help'
-
-set cmds build install
 
 #################################################
 # functions
@@ -58,18 +51,4 @@ end
 # actual script
 #################################################
 
-# install objs
-eval "$SCRIPTS_DIR/install.fish --link --dest '$install'"
-
-# install structuredData
-cd "$BASE_DIR/dependencies/structuredData"
-eval "$BASE_DIR/dependencies/structuredData/scripts/run_autotools.fish"
-cd -
-
-eval "$BASE_DIR/dependencies/structuredData/scripts/build.fish build install --prefix '$install_sd'"
-
-# install sdScript:
-cd "$BASE_DIR/dependencies/sdScript"
-eval "$BASE_DIR/dependencies/sdScript/scripts/run_autotools.fish"
-cd -
-eval "$BASE_DIR/dependencies/sdScript/scripts/build.fish build install --prefix '$install_sdscript'"
+eval "$SCRIPTS_DIR/install.fish --no-subdirs --deps --dest '$doc_dir'"

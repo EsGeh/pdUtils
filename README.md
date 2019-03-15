@@ -12,44 +12,36 @@ Some mentionable features:
 
 ## Dependencies
 
-- fish shell
 - [sdScript](https://github.com/EsGeh/sdScript)
 - [structuredData](https://github.com/EsGeh/structuredData)
-- other repositories. Please execute:
 
-		$ ./scripts/init.fish
+## Build Dependencies
+
+- fish shell
+- git
+- autotools (only needed to build the dependencies)
+
+## Initialize Project
+
+init project (download dependencies, ...):
+
+	$ ./scripts/init.fish
 
 ## Installation
 
-Make shure you have all the dependencies installed.
-
-1. To install the library, just issue:
-
 	$ ./scripts/install.fish
 
-	(for options append `--help`)
+Dependencies can be installed automatically too.
+For details, append the `--help` option.
 
-This will copy all necessary abstractions to the home directory.
+## Running
 
-2. add library to pd search path
-
-	you have two options:
-
-	- start pd from the command line like this:
-
-			$ pd [-path <install_path>]
-
-	- add this to `~/.pdsettings` :
-
-			...
-			path1: <install_path>
-			...
-
-	(manuall adjust the numbering!)
+The library has to be added and to be in the search path.
+Both can be done using cmd line arguments or in the ~/.pdsettings.
 
 ## Uninstall
 
-No script provided yet
+No script provided. Just delete the install directory!
 
 ## Other scripts
 

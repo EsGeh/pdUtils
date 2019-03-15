@@ -1,6 +1,10 @@
 #!/bin/fish
 
-source (dirname (readlink -m (status filename)))/utils/cmd_args.fish
+set BASE_DIR (dirname (readlink -m (status filename)))/..
+set SCRIPTS_DIR (dirname (readlink -m (status filename)))
+set DEP_DIR $BASE_DIR/dependencies
+
+source "$SCRIPTS_DIR/utils/cmd_args.fish"
 
 
 #################################################
@@ -8,18 +12,19 @@ source (dirname (readlink -m (status filename)))/utils/cmd_args.fish
 #################################################
 
 
-set src (dirname (readlink -m (status filename)))/../pd_objs
-set install_dir "$HOME/.local/lib/pd/extra/pdUtils"
+set src $BASE_DIR/pd_objs
+set install_dir "$HOME/.local/lib/pd/extra"
 set rename '{}'
 
 # (syntax: short/long/description)
 set options_descr \
 	"h/help/print help" \
 	"l/link/don't copy files but create symbolic links instead" \
-	"d/dest=/destination dir (default: '$install_dir')" \
+	"d/dest=/install dest (default: '$install_dir')" \
 	"s/source=/source dir (default: '$src')" \
-	"r/rename=/pattern for filenames on dest ({} is the basename on src). example: '\$(basename {} .pd)_ext.pd'"
-
+	"r/rename=/pattern for filenames on dest ({} is the basename on src). example: '\$(basename {} .pd)_ext.pd'" \
+	"x-deps/also install dependencies" \
+	"n/no-subdirs/no subdirs for specific libraries"
 
 #################################################
 # functions
@@ -62,22 +67,34 @@ else
 	if set -q _flag_source
 		set src $_flag_source
 	end
+	if set -q _flag_deps
+		set install_deps $_flag_deps
+	end
+	if set -q _flag_no_subdirs
+		set no_subdirs $_flag_no_subdirs
+	end
+end
+
+if not set -q no_subdirs
+	set install_dest "$install_dir/pdUtils"
+else
+	set install_dest "$install_dir"
 end
 
 # make '{}' to refer to the (basename {})
 set rename (string replace --regex --all -- '{}' '\\\$(basename {})' "$rename")
 
-set copyCmd (string join -- ' ' $copyCmd '"{}"' "\"$install_dir/$rename\"")
+set copyCmd (string join -- ' ' $copyCmd '"{}"' "\"$install_dest/$rename\"")
 
 #################################################
 # actual script
 #################################################
 
 echo "src dir: '$src'"
-echo "install dir: '$install_dir'"
+echo "install dest: '$install_dest'"
 echo "copyCmd: $copyCmd"
 
-mkdir -v -p $install_dir
+mkdir -v -p $install_dest
 
 find "$src" \
 	\( \
@@ -91,3 +108,26 @@ find "$src" \
 		-name '*.script' \
 	\) \
 	-exec /bin/bash -c "$copyCmd" \;
+
+# dependencies:
+if set -q install_deps
+	# structuredData:
+	if not set -q no_subdirs
+		set current_dest "$install_dir/structuredData"
+	else
+		set current_dest "$install_dir"
+	end
+	echo "installing structuredData into '$current_dest'"
+	and eval "$DEP_DIR/structuredData/scripts/init.fish"
+	and eval "$DEP_DIR/structuredData/scripts/build.fish --prefix '$current_dest' install"
+
+	# sdScript:
+	if not set -q no_subdirs
+		set current_dest "$install_dir/sdScript"
+	else
+		set current_dest "$install_dir"
+	end
+	echo "installing sdScript into '$current_dest'"
+	and eval "$DEP_DIR/sdScript/scripts/init.fish"
+	and eval "$DEP_DIR/sdScript/scripts/build.fish --prefix '$current_dest' install"
+end

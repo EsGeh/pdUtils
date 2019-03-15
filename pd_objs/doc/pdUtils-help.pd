@@ -1,4 +1,4 @@
-#N canvas 848 30 750 263 10;
+#N canvas 0 30 846 854 10;
 #X obj 80 157 sdRandomDoc;
 #N canvas 0 30 846 854 sequencing 0;
 #X obj 343 41 bng 15 250 50 0 empty empty restart_time 17 7 0 10 -262144
@@ -113,7 +113,7 @@ next event:;
 #X restore 85 383 pd sequencing;
 #X text 53 264 gui elements;
 #X text 48 210 signal;
-#N canvas 0 30 846 854 signal 1;
+#N canvas 0 30 846 854 signal 0;
 #X floatatom 156 25 5 0 0 0 - - -;
 #X floatatom 223 164 5 0 0 0 - - -;
 #X obj 282 98 sdGate~ 0;
