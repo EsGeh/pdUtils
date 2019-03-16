@@ -17,7 +17,7 @@ cd -
 # structuredData
 git clone git@github.com:EsGeh/structuredData.git
 cd structuredData
-git checkout 22187f2637780eef583e3da8978ee06ede2f2923
+git checkout ec60c2b3f3efad15f198e672da50b3f64542855a
 cd -
 
 # sdScript
