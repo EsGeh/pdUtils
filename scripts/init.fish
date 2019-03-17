@@ -5,10 +5,7 @@ set BASE_DIR (dirname (readlink -m (status filename)))/..
 set SCRIPTS_DIR (dirname (readlink -m (status filename)))
 set DEP_DIR_DEFAULT "$BASE_DIR/dependencies"
 
-set fishshell_cmd_opts_version e446daf1741b416ecb83e4741b4cb7f99645bc11
-set structureddata_version ffd30d8bddb0796a1d20784ed2f812b47b18a845
-set sdscript_version ed944372af7777ae5defab820ed9a71e82a49796
-
+source "$BASE_DIR/dependencies.fish"
 
 # (syntax: short/long/description)
 set options \
@@ -58,73 +55,41 @@ end
 
 mkdir -p -v $DEP_DIR
 
-function is_up_to_date
-	# check for fishshell-cmd-opts:
-	if [ ! -d $DEP_DIR/fishshell-cmd-opts ]
-		return 1
-	end
-	cd "$DEP_DIR"/fishshell-cmd-opts
-	if [ (git rev-parse HEAD) != $fishshell_cmd_opts_version ]
+
+# check and install dependencies if necessary:
+cd "$DEP_DIR"
+echo (pwd)
+and begin
+	for dep in $dependencies
+		set lib_name $$dep[1][1]
+		set lib_url $$dep[1][2]
+		set lib_version $$dep[1][3]
+
+		echo "dependency: $dep"
+		echo "url: $lib_url, version: $lib_version"
+	
+		# download if missing:
+		if [ -d $DEP_DIR/$lib_name ]
+			echo "found in $DEP_DIR/$lib_name"
+		else
+			git clone "$lib_url"
+			cd $dep/
+			git checkout "$lib_version"
+			cd -
+		end
+		# check if we have the correct version:
+		cd "$lib_name"
+		if [ (git rev-parse HEAD) != $lib_version ]
+			echo "$lib_name: ERROR: incompatible versions. Try cleaning $DEP_DIR and run again!"
+		else
+			echo "$lib_name is up to date"
+		end
 		cd -
-		return 1
-	end
-	cd -
-
-	# check for structuredData:
-	if [ ! -d $DEP_DIR/structuredData ]
-		return 1
-	end
-	cd "$DEP_DIR"/structuredData
-	if [ (git rev-parse HEAD) != $structureddata_version ]
-		cd -
-		return 1
-	end
-	cd -
-
-	# check for sdScript:
-	if [ ! -d $DEP_DIR/sdScript ]
-		return 1
-	end
-	cd "$DEP_DIR"/sdScript
-	if [ (git rev-parse HEAD) != $sdscript_version ]
-		cd -
-		return 1
-	end
-	cd -
-
-	return 0
-end
-
-if is_up_to_date
-	echo "all dependencies up to date!"
-else
-	if [ "$DEP_DIR" = "$DEP_DIR_DEFAULT" ]
-		rm -rf -v $DEP_DIR
-		mkdir -p -v $DEP_DIR
-
-		cd "$DEP_DIR"
-		# cmd line utils
-		git clone git@github.com:EsGeh/fishshell-cmd-opts.git
-		cd fishshell-cmd-opts/
-		git checkout $fishshell_cmd_opts_version
-		cd -
-
-		# structuredData
-		git clone git@github.com:EsGeh/structuredData.git
-		cd structuredData
-		git checkout $structureddata_version
-		cd -
-
-		# sdScript
-		git clone git@github.com:EsGeh/sdScript.git
-		cd sdScript
-		git checkout $sdscript_version
-		cd -
-	else
-		echo "WARNING: incompatible versions!"
 	end
 end
+cd "$BASE_DIR"
 
+# update link to fish utilities:
 if [ $DEP_DIR != $DEP_DIR_DEFAULT ]
 	rm $SCRIPTS_DIR/utils/cmd_args.fish
 	ln -s (readlink -m $DEP_DIR/fishshell-cmd-opts/cmd_args.fish) $SCRIPTS_DIR/utils/cmd_args.fish
