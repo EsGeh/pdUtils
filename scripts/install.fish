@@ -24,7 +24,8 @@ set options_descr \
 	"s/source=/source dir (default: '$src')" \
 	"r/rename=/pattern for filenames on dest ({} is the basename on src). example: '\$(basename {} .pd)_ext.pd'" \
 	"x-deps/also install dependencies" \
-	"n/no-subdirs/no subdirs for specific libraries"
+	"n/no-subdirs/no subdirs for specific libraries" \
+	"y-dep-dir=/dependency repositories can be found here. default: $DEP_DIR"
 
 #################################################
 # functions
@@ -73,6 +74,9 @@ else
 	if set -q _flag_no_subdirs
 		set no_subdirs $_flag_no_subdirs
 	end
+	if set -q _flag_dep_dir
+		set DEP_DIR $_flag_dep_dir
+	end
 end
 
 if not set -q no_subdirs
@@ -118,7 +122,6 @@ if set -q install_deps
 		set current_dest "$install_dir"
 	end
 	echo "installing structuredData into '$current_dest'"
-	and eval "$DEP_DIR/structuredData/scripts/init.fish --deps-dir $DEP_DIR"
 	and eval "$DEP_DIR/structuredData/scripts/build.fish --prefix '$current_dest' install"
 
 	# sdScript:
@@ -128,6 +131,5 @@ if set -q install_deps
 		set current_dest "$install_dir"
 	end
 	echo "installing sdScript into '$current_dest'"
-	and eval "$DEP_DIR/sdScript/scripts/init.fish --deps-dir $DEP_DIR"
 	and eval "$DEP_DIR/sdScript/scripts/build.fish --prefix '$current_dest' install"
 end

@@ -59,21 +59,25 @@ mkdir -p -v $DEP_DIR
 # check and install dependencies if necessary:
 cd "$DEP_DIR"
 echo (pwd)
+
 and begin
 	for dep in $dependencies
 		set lib_name $$dep[1][1]
 		set lib_url $$dep[1][2]
 		set lib_version $$dep[1][3]
+		if [ $$dep[1][3] != "" ]
+			set init_cmd $$dep[1][4]
+		end
 
 		echo "dependency: $dep"
 		echo "url: $lib_url, version: $lib_version"
 	
 		# download if missing:
-		if [ -d $DEP_DIR/$lib_name ]
+		if [ -d "$DEP_DIR/$lib_name" ]
 			echo "found in $DEP_DIR/$lib_name"
 		else
 			git clone "$lib_url"
-			cd $dep/
+			cd "$lib_name/"
 			git checkout "$lib_version"
 			cd -
 		end
@@ -83,6 +87,12 @@ and begin
 			echo "$lib_name: ERROR: incompatible versions. Try cleaning $DEP_DIR and run again!"
 		else
 			echo "$lib_name is up to date"
+		end
+		# call init script:
+		if set -q init_cmd
+			set init_cmd (echo $init_cmd | sed "s:\$DEP_DIR:$DEP_DIR:g")
+			echo "calling '$init_cmd' ..."
+			eval "$init_cmd"
 		end
 		cd -
 	end
@@ -94,3 +104,4 @@ if [ $DEP_DIR != $DEP_DIR_DEFAULT ]
 	rm $SCRIPTS_DIR/utils/cmd_args.fish
 	ln -s (readlink -m $DEP_DIR/fishshell-cmd-opts/cmd_args.fish) $SCRIPTS_DIR/utils/cmd_args.fish
 end
+
