@@ -118,7 +118,7 @@ if set -q install_deps
 		set current_dest "$install_dir"
 	end
 	echo "installing structuredData into '$current_dest'"
-	and eval "$DEP_DIR/structuredData/scripts/init.fish"
+	and eval "$DEP_DIR/structuredData/scripts/init.fish --deps-dir $DEP_DIR"
 	and eval "$DEP_DIR/structuredData/scripts/build.fish --prefix '$current_dest' install"
 
 	# sdScript:
@@ -128,6 +128,6 @@ if set -q install_deps
 		set current_dest "$install_dir"
 	end
 	echo "installing sdScript into '$current_dest'"
-	and eval "$DEP_DIR/sdScript/scripts/init.fish"
+	and eval "$DEP_DIR/sdScript/scripts/init.fish --deps-dir $DEP_DIR"
 	and eval "$DEP_DIR/sdScript/scripts/build.fish --prefix '$current_dest' install"
 end
