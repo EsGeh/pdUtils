@@ -9,6 +9,7 @@ pd \
 	-noprefs \
 	-jack \
 	-path "$doc_dir" \
+	-lib "zexy" \
 	-lib "structuredDataC" \
 	-lib "sdScript" \
 	"$doc_dir/pdUtils-help.pd"

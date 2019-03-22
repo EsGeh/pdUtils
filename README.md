@@ -14,6 +14,7 @@ Some mentionable features:
 
 - [sdScript](https://github.com/EsGeh/sdScript)
 - [structuredData](https://github.com/EsGeh/structuredData)
+- [zexy](https://github.com/soundcloud/pd-zexy)
 
 ## Build Dependencies
 
