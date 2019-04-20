@@ -1,6 +1,6 @@
-#N canvas 800 30 798 263 10;
+#N canvas 805 30 559 219 10;
 #X obj 80 157 sdRandomDoc;
-#N canvas 0 30 846 854 sequencing 0;
+#N canvas 0 30 803 722 sequencing 1;
 #X obj 343 41 bng 15 250 50 0 empty empty restart_time 17 7 0 10 -262144
 -1 -1;
 #X text 63 173 output recorded sequence;
@@ -135,7 +135,7 @@ next event:;
 #X obj 84 64 sdMathDoc;
 #X text 46 42 math utils;
 #X text 53 357 record and play back events:;
-#N canvas 0 30 798 854 gui 1;
+#N canvas 0 30 681 722 gui 0;
 #X obj 200 540 sdIn_ui~;
 #X obj 197 770 sdOut_ui~;
 #X floatatom 488 63 5 0 0 0 - - -;

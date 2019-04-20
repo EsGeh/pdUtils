@@ -6,8 +6,7 @@
 
 set dependencies \
 	fishshell_cmd_opts \
-	structuredData \
-	sdScript 
+	structuredData
 
 # for every entry in $dependencies:
 # 	name uri version
@@ -18,10 +17,5 @@ set fishshell_cmd_opts \
 set structuredData \
 	structuredData \
 	https://github.com/EsGeh/structuredData.git \
-	e1dab38dcc65728c54b6cf1e633cc8c8664276a7 \
-	"scripts/init.fish --deps-dir \$DEP_DIR"
-set sdScript \
-	sdScript \
-	https://github.com/EsGeh/sdScript.git \
-	27bf45ae9c4c6dce3f5c545f1bffaaab4baca515 \
+	2f712db19abbc071a40c2d102cdaef0c22a1790a \
 	"scripts/init.fish --deps-dir \$DEP_DIR"

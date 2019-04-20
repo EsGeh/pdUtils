@@ -123,13 +123,4 @@ if set -q install_deps
 	end
 	echo "installing structuredData into '$current_dest'"
 	and eval "$DEP_DIR/structuredData/scripts/build.fish --prefix '$current_dest' install"
-
-	# sdScript:
-	if not set -q no_subdirs
-		set current_dest "$install_dir/sdScript"
-	else
-		set current_dest "$install_dir"
-	end
-	echo "installing sdScript into '$current_dest'"
-	and eval "$DEP_DIR/sdScript/scripts/build.fish --prefix '$current_dest' install"
 end
