@@ -1,6 +1,6 @@
-#N canvas 805 30 559 219 10;
+#N canvas 0 30 844 722 10;
 #X obj 80 157 sdRandomDoc;
-#N canvas 0 30 803 722 sequencing 1;
+#N canvas 0 30 844 722 sequencing 0;
 #X obj 343 41 bng 15 250 50 0 empty empty restart_time 17 7 0 10 -262144
 -1 -1;
 #X text 63 173 output recorded sequence;
