@@ -1,10 +1,10 @@
-#N canvas 0 30 844 722 10;
+#N canvas 0 30 681 722 10;
 #X obj 145 4 tgl 15 0 \$0-dsp \$0-dsp_rcv dsp 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X obj 114 19 vsl 15 33 0 1 0 0 \$0-out-slider \$0-out-slider_rcv empty
-0 -9 0 10 -262144 -1 -1 1500 1;
+0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 114 58 nbx 3 14 0 1 0 0 \$0-out-num \$0-out-num_rcv empty 0
--8 0 8 -262144 -1 -1 0.46875 256;
+-8 0 8 -262144 -1 -1 0 256;
 #X text 113 -1 out;
 #X obj 313 14 inlet~;
 #X obj 373 14 inlet~;
@@ -20,11 +20,11 @@
 #X obj 34 426 r \$0-out-num;
 #X obj 494 530 r \$0-out-num;
 #X obj 2 18 vsl 15 33 0 1 0 0 \$0-in-slider \$0-in-slider_rcv empty
-0 -9 0 10 -262144 -1 -1 2200 1;
+0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 2 57 nbx 3 14 0 1 0 0 \$0-in-num \$0-in-num_rcv empty 0 -8 0
-8 -262144 -1 -1 0.6875 256;
+8 -262144 -1 -1 0 256;
 #X obj 21 16 tgl 15 0 \$0-in-toggle \$0-in-toggle_rcv empty 17 7 0
-10 -262144 -1 -1 0.6875 1;
+10 -262144 -1 -1 0 1;
 #X text 0 1 in;
 #X msg 34 266 set \$1;
 #X obj 321 306 f;
