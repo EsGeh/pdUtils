@@ -1,10 +1,10 @@
-#N canvas 0 30 803 722 10;
+#N canvas 0 30 762 722 10;
 #X obj 145 4 tgl 15 0 \$0-dsp \$0-dsp_rcv dsp 17 7 0 10 -262144 -1
 -1 1 1;
 #X obj 114 19 vsl 15 33 0 1 0 0 \$0-out-slider \$0-out-slider_rcv empty
-0 -9 0 10 -262144 -1 -1 0 1;
+0 -9 0 10 -262144 -1 -1 2400 1;
 #X obj 114 58 nbx 3 14 0 1 0 0 \$0-out-num \$0-out-num_rcv empty 0
--8 0 8 -262144 -1 -1 0 256;
+-8 0 8 -262144 -1 -1 0.75 256;
 #X text 113 -1 out;
 #X obj 313 14 inlet~;
 #X obj 373 14 inlet~;
@@ -53,7 +53,7 @@
 #X obj 2 75 cnv 15 40 14 empty \$0-in-cnv_rcv 0 1 9 1 14 -233017 -66577
 0;
 #X obj 192 159 s \$0-in-cnv_rcv;
-#X obj 114 75 cnv 15 40 14 empty \$0-out-cnv_rcv 0 1 9 1 14 -233017
+#X obj 114 75 cnv 15 40 14 empty \$0-out-cnv_rcv 0.78 1 9 1 14 -233017
 -66577 0;
 #N canvas 0 30 798 854 env 0;
 #X obj 43 18 inlet~;
@@ -123,9 +123,9 @@
 #X msg 674 395 set \$1;
 #X obj 672 417 s \$0-out-overflow_rcv;
 #X obj 155 75 tgl 13 0 \$0-out-overflow \$0-out-overflow_rcv empty
-17 7 0 10 -262144 -258113 -1 1 1;
+17 7 0 10 -262144 -258113 -1 0 1;
 #X obj 43 75 tgl 13 0 \$0-in-overflow \$0-in-overflow_rcv empty 17
-7 0 10 -262144 -258113 -1 1 1;
+7 0 10 -262144 -258113 -1 0 1;
 #X obj 531 167 sdObjTrack audio-on in-vol out-vol shortcut-vol out-overflow
 in-overflow, f 28;
 #X obj 639 286 route audio-on out-overflow in-overflow, f 25;
@@ -140,6 +140,7 @@ in-overflow, f 28;
 #X obj 365 606 r \$0-in-overflow;
 #X obj 365 630 sdPack in-overflow;
 #X obj 312 76 sdIO_obj~ \$1 \$2 \$3 \$4 \$5;
+#X obj 746 486 print DB;
 #X connect 4 0 99 0;
 #X connect 5 0 99 1;
 #X connect 6 0 12 0;
