@@ -1,4 +1,4 @@
-#N canvas 0 30 681 722 10;
+#N canvas 0 30 803 722 10;
 #X obj 669 683 send \$0-slider_rcv;
 #X obj 344 513 pack 0 0;
 #X obj 299 463 r \$0-min;
@@ -20,10 +20,10 @@
 #X obj 274 9 loadbang;
 #X obj 567 767 namecanvas \$0-canvas;
 #X text 564 749 give this canvas a unique name:;
-#X obj 2 5 vsl 12 51 0 1 0 0 \$0-slider \$0-slider_rcv empty 0 -9 0
-10 -262144 -1 -1 0 1;
-#X obj 2 62 nbx 5 14 0 1 0 0 \$0-num \$0-num_rcv empty 0 -8 0 10 -262144
--1 -1 0 256;
+#X obj 2 5 vsl 12 51 0 100 0 0 \$0-slider \$0-slider_rcv empty 0 -9
+0 10 -262144 -1 -1 5000 1;
+#X obj 2 62 nbx 5 14 0 100 0 0 \$0-num \$0-num_rcv empty 0 -8 0 10
+-262144 -1 -1 100 256;
 #X obj 115 11 inlet;
 #X obj 215 9 inlet;
 #X obj 481 12 inlet;
@@ -95,7 +95,7 @@
 #X obj 16 18 nbx 4 12 -1e+37 1e+37 0 0 \$0-min \$0-min_rcv empty 0
 -8 0 10 -262144 -1 -1 0 256;
 #X obj 16 3 nbx 4 12 -1e+37 1e+37 0 0 \$0-max \$0-max_rcv empty 0 -8
-0 10 -262144 -1 -1 1 256;
+0 10 -262144 -1 -1 100 256;
 #X obj 331 658 r \$0-min;
 #X msg 331 681 set \$1;
 #X obj 331 704 s \$0-min_rcv;

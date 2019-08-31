@@ -1,4 +1,4 @@
-#N canvas 0 30 844 722 10;
+#N canvas 0 30 803 722 10;
 #X obj 92 327 outlet~;
 #X obj 151 327 outlet~;
 #X obj 344 38 inlet;
@@ -9,10 +9,11 @@
 #X text 436 173 msgs;
 #X obj 209 326 s \$0-fromObj;
 #X obj 464 106 r \$0-fromObj;
-#X obj 394 153 sdObjState \$1 \$2;
-#X obj 92 304 sdIn~ \$3, f 20;
+#X obj 394 153 sdObjState \$1 \$2 \$3;
+#X obj 92 304 sdIn~ \$4, f 20;
 #X connect 2 0 10 0;
 #X connect 4 0 10 1;
+#X connect 5 0 11 0;
 #X connect 5 1 11 0;
 #X connect 9 0 4 0;
 #X connect 10 0 5 0;
