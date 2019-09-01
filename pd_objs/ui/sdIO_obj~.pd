@@ -1,4 +1,4 @@
-#N canvas 0 30 803 722 10;
+#N canvas 0 30 721 736 10;
 #X obj 35 19 inlet~;
 #X obj 132 19 inlet~;
 #X obj 33 303 outlet~;
@@ -8,13 +8,14 @@
 #X obj 231 23 inlet;
 #X obj 434 310 outlet;
 #X obj 351 113 list;
-#X obj 154 182 sdEventToProperties;
+#X obj 154 217 sdEventToProperties;
 #X text 264 158 events;
 #X text 323 158 msgs;
 #X obj 235 306 s \$0-fromObj;
 #X obj 351 91 r \$0-fromObj;
 #X obj 281 138 sdObjState \$1 \$2 \$3;
 #X obj 33 280 sdIO~ \$4 \$5, f 34;
+#X obj 156 170 sdPackFilter info update, f 17;
 #X connect 0 0 15 0;
 #X connect 1 0 15 1;
 #X connect 6 0 14 0;
@@ -22,7 +23,7 @@
 #X connect 9 0 15 2;
 #X connect 9 1 15 2;
 #X connect 13 0 8 0;
-#X connect 14 0 9 0;
+#X connect 14 0 16 0;
 #X connect 14 1 15 2;
 #X connect 14 2 7 0;
 #X connect 15 0 2 0;
@@ -30,3 +31,4 @@
 #X connect 15 2 4 0;
 #X connect 15 3 5 0;
 #X connect 15 4 12 0;
+#X connect 16 1 9 0;
