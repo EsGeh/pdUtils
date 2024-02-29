@@ -17,7 +17,6 @@ The structure of this library is based on design principles introduced by the [s
 
 ## Dependencies
 
-- [sdScript](https://github.com/EsGeh/sdScript)
 - [structuredData](https://github.com/EsGeh/structuredData)
 - [zexy](https://github.com/soundcloud/pd-zexy)
 
