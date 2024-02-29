@@ -1,14 +1,19 @@
 # sdUtils
 
-Some puredata abstractions. Bits and pieces I use in puredata projects.
-It has is designed in the spirit of the [structuredData](https://github.com/EsGeh/structuredData) library.
+Utility objects to be used with the [puredata](https://puredata.info/) computer music software.
+The structure of this library is based on design principles introduced by the [structuredData](https://github.com/EsGeh/structuredData) library.
 
-Some mentionable features:
+# Features:
 
-- "sequencing"
+- Sequencing
 
 	Events can be recorded and played back again.
 	Events are messages structured in a specific way, as documented by the structuredData documentation.
+
+- Utility audio objects
+
+    Little helper objects for audio level control.
+    Little audio control objects with integrated gui sliders.
 
 ## Dependencies
 
@@ -16,55 +21,54 @@ Some mentionable features:
 - [structuredData](https://github.com/EsGeh/structuredData)
 - [zexy](https://github.com/soundcloud/pd-zexy)
 
-## Build Dependencies
+## Prerequisits
 
-- fish shell
-- git
-- autotools (only needed to build the dependencies)
+- [fish shell](https://fishshell.com/)
+- [puredata](https://puredata.info/): the famous computer music software
 
-## Initialize Project
+## Project setup
 
-init project (download dependencies, ...):
+- Initialise project (download dependencies, ...):
 
-	$ ./scripts/init.fish
+		$ ./scripts/init.fish
+	
+	This will download and git dependencies into `./dependencies/`
 
-## Installation
-
-	$ ./scripts/install.fish
-
-Dependencies can be installed automatically too.
-For details, append the `--help` option.
-
-## Running
-
-The library has to be added and to be in the search path.
-Both can be done using cmd line arguments or in the ~/.pdsettings.
-
-## Uninstall
-
-No script provided. Just delete the install directory!
-
-## Other scripts
-
-- clean up downloaded dependencies, temporary files:
+- Clean project
 
 		$ ./scripts/exit.fish
 
+## Test locally without installing to system
+
+1. Install library to a local dir
+
+		$ ./scripts/local_init.fish
+
+2. Run Example
+
+		$ ./scripts/local_run.fish
+
+	This opens an example patch documenting the major parts of this library.
+
+3. Uninstall library from the local dir
+
+		$ ./scripts/local_exit.fish
+
+## Installation
+
+- Build and install:
+
+        $ ./scripts/build.fish install
+
+    (for options append `--help`)
+
+- Configure pd to find abstractions
+
+	start pd and add `<install_location>/pdUtils` under `File -> Settings -> Path -> New`
+
+- Make sure the [dependencies](#dependencies) are installed. Please refer to the corresponding documentation of these libraries.
+
 ## Documentation
 
-The documentation is provided as a puredata example patch.
-To see it, please install and run it, as described below:
-
-### install docu
-
-This installs all dependencies in some local folder.
-
-	$ ./scripts/local_init.fish
-
-### run docu
-
-	$ ./scripts/local_run.fish
-
-### uninstall docu
-
-	$ ./scripts/local_exit.fish
+The Documentation is provided as puredata example patches accessible in pd under `Help -> Patch Browser -> structuredDataC`.
+Alternatively, for help with a specific object, right click on it and select "help".
