@@ -10,16 +10,8 @@ set LIB_NAME (basename $BASE_DIR)
 # variables
 #################################################
 
-set doc_dir $BASE_DIR/doc
-
-set doc_path "$doc_dir/usr/local/lib/pd-externals"
-
-set lib_path "$doc_path/$LIB_NAME"
-set zexy_path "$doc_path/zexy"
-set sd_path "$doc_path/structuredDataC"
-
-set pd_patch "$lib_path/pdUtils-help.pd"
-
+set doc_dir "$BASE_DIR/doc"
+set pd_patch "$doc_dir/$LIB_NAME/pdUtils-help.pd"
 set debug 0
 
 #################################################
@@ -80,11 +72,13 @@ set --append cmd \
 	-stderr \
 	-jack \
 	-nrt \
-	-path "$zexy_path" \
-	-path "$sd_path" \
-	-path "$lib_path" \
+	-path "$doc_dir" \
+	-path "$doc_dir/$LIB_NAME" \
+	-path "$doc_dir/structuredDataC" \
+	-path "$doc_dir/zexy" \
+	-lib "$LIB_NAME" \
 	-lib "structuredDataC" \
-	-lib zexy \
+	-lib "zexy" \
 	$pd_patch
 
 $cmd

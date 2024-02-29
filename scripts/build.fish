@@ -83,7 +83,7 @@ begin
 	# make:
 	set cmd make
 	if test $install_prefix != ''
-		set --append cmd DESTDIR=$install_prefix
+		set --append cmd PDLIBDIR=$install_prefix
 	end
 	if set --query symlink
 		set --append cmd INSTALL_DATA='ln -s --relative'
