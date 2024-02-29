@@ -19,7 +19,7 @@ set fishshell_cmd_opts \
 set structuredData \
 	structuredData \
 	https://github.com/EsGeh/structuredData.git \
-	edb67f3ae082da68e624a9683f63935383b8074b \
+	b3864d58ab45d8f6ca7b82fa8070dcb83eb0c384	\
 	"scripts/init.fish --deps-dir \$DEP_DIR"
 
 set pd_lib_builder \
