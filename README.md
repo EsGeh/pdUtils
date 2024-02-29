@@ -59,12 +59,12 @@ To see it, please install and run it, as described below:
 
 This installs all dependencies in some local folder.
 
-	$ ./scripts/doc_init.fish
+	$ ./scripts/local_init.fish
 
 ### run docu
 
-	$ ./scripts/doc_run.fish
+	$ ./scripts/local_run.fish
 
 ### uninstall docu
 
-	$ ./scripts/doc_exit.fish
+	$ ./scripts/local_exit.fish

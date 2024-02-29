@@ -6,7 +6,8 @@
 
 set dependencies \
 	fishshell_cmd_opts \
-	structuredData
+	structuredData \
+	pd_lib_builder
 
 # for every entry in $dependencies:
 # 	name uri version
@@ -18,5 +19,10 @@ set fishshell_cmd_opts \
 set structuredData \
 	structuredData \
 	https://github.com/EsGeh/structuredData.git \
-	fa2229f2b05cc577aacb85c57105dcc5bdfd989c \
+	edb67f3ae082da68e624a9683f63935383b8074b \
 	"scripts/init.fish --deps-dir \$DEP_DIR"
+
+set pd_lib_builder \
+	pd-lib-builder \
+	https://github.com/pure-data/pd-lib-builder.git \
+	77525265694bac50ed94c5ef62ebbae680c72ab0
